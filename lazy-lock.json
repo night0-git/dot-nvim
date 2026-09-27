@@ -62,6 +62,7 @@
   "trouble.nvim": { "branch": "main", "commit": "bd67efe408d4816e25e8491cc5ad4088e708a69a" },
   "vim-moonfly-colors": { "branch": "master", "commit": "2c883835f5b7b380a0a9e80695c420f7efebdfe4" },
   "vim-nightfly-colors": { "branch": "master", "commit": "2c31d07ce05efa92bcb7f893f9c74a846226c898" },
+  "vim-tmux-navigator": { "branch": "master", "commit": "e41c431a0c7b7388ae7ba341f01a0d217eb3a432" },
   "which-key.nvim": { "branch": "main", "commit": "3aab2147e74890957785941f0c1ad87d0a44c15a" },
   "winshift.nvim": { "branch": "main", "commit": "37468ed6f385dfb50402368669766504c0e15583" }
 }

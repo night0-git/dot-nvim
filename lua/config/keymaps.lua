@@ -26,12 +26,6 @@ map("i", "<C-BS>", "<C-w>")
 -- map("n", "<C-]>", "<cmd>bprev<cr>")
 map("n", "<leader><leader>", "<cmd>b#<cr>")
 
--- Easier pane navigation.
-map("n", "<C-h>", "<C-w>h")
-map("n", "<C-j>", "<C-w>j")
-map("n", "<C-k>", "<C-w>k")
-map("n", "<C-l>", "<C-w>l")
-
 -- Resize with arrows.
 -- Helper to resize with awareness of pane position.
 local function resize(dir, val)
