@@ -9,7 +9,8 @@ return {
     ---@module "auto-session"
     ---@type AutoSession.Config
     opts = {
+        cwd_change_handling = true,
         suppressed_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
-        bypass_save_filetypes = { "alpha", "oil", "NvimTree" },
+        bypass_save_filetypes = { "alpha" },
     },
 }
