@@ -51,9 +51,6 @@ return {
                 if vim.bo[buf].buftype == "terminal" or vim.fn.bufname(buf):match("^term://") then
                     return false
                 end
-                if vim.bo[buf].filetype == "zdiff" then
-                    return false
-                end
                 return default_enable(buf, win, info)
             end
         end,
