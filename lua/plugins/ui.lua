@@ -185,7 +185,7 @@ return {
             disabled_filetypes = {
                 "help", "text", "markdown", "lazy", "mason", "alpha",
                 "NvimTree", "lazy", "mason", "checkhealth", "lspinfo",
-                "trouble", "fish",
+                "trouble", "fish", "qf",
             },
         },
     },
