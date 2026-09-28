@@ -1,18 +1,20 @@
+local augroup = vim.api.nvim_create_augroup("UserAutocmds", { clear = true })
+
 vim.api.nvim_create_autocmd("VimResized", {
     desc = "Recalculate floating windows on resize",
-    group = vim.api.nvim_create_augroup("ResizeFloatingWindows", { clear = true }),
+    group = augroup,
     callback = function()
         -- Check if the current buffer is an Oil buffer.
         if vim.bo.filetype == "oil" then
             require("oil").close()
             require("oil").open_float()
         end
-    end
+    end,
 })
 
 vim.api.nvim_create_autocmd("LspAttach", {
     desc = "LSP keymaps",
-    group = vim.api.nvim_create_augroup("UserLspConfig", { clear = true }),
+    group = augroup,
     callback = function(event)
         local opts = {
             nowait = true,
@@ -57,8 +59,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
 -- Track fish bind mode and interactive TUI per terminal buffer.
 vim.api.nvim_create_autocmd("TermRequest", {
     desc = "Track shell bind mode via OSC sequences",
+    group = augroup,
     callback = function(args)
-        -- In neovim, args.data is either the raw string itself or a table 
+        -- In neovim, args.data is either the raw string itself or a table
         -- containing { sequence = "..." }.
         local seq = type(args.data) == "table" and (args.data.sequence or args.data.request) or args.data
         if type(seq) ~= "string" then
@@ -74,6 +77,7 @@ vim.api.nvim_create_autocmd("TermRequest", {
 
 vim.api.nvim_create_autocmd({ "BufReadPost", "FileReadPost" }, {
     desc = "Auto fold Obsidian's frontmatter",
+    group = augroup,
     pattern = "*.md",
     callback = function(args)
         -- UFO loads asynchronously so we delay the execution.
@@ -90,7 +94,7 @@ vim.api.nvim_create_autocmd({ "BufReadPost", "FileReadPost" }, {
 
 vim.api.nvim_create_autocmd("ColorScheme", {
     desc = "Ensure floating window highlights are consistent across themes",
-    group = vim.api.nvim_create_augroup("FloatHighlightFix", { clear = true }),
+    group = augroup,
     callback = function()
         local normal = vim.api.nvim_get_hl(0, { name = "Normal" })
         local float = vim.api.nvim_get_hl(0, { name = "NormalFloat" })
@@ -100,7 +104,7 @@ vim.api.nvim_create_autocmd("ColorScheme", {
             vim.api.nvim_set_hl(0, "NormalFloat", { bg = normal.bg })
         end
 
-        -- If FloatBorder fg is undefined, use Comment color for a subtle 
+        -- If FloatBorder fg is undefined, use Comment color for a subtle
         -- border.
         local border = vim.api.nvim_get_hl(0, { name = "FloatBorder" })
         if not border.fg then
