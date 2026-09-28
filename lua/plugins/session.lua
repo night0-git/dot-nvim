@@ -2,7 +2,7 @@ return {
     "rmagatti/auto-session",
     lazy = false,
     keys = {
-        { "<leader>ss", "<cmd>AutoSession search<CR>", desc = "Session search" },
+        { "<leader>ss", "<cmd>AutoSession search<CR>",       desc = "Session search" },
         { "<leader>sd", "<cmd>AutoSession deletePicker<CR>", desc = "Session delete" },
     },
 
