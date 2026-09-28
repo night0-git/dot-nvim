@@ -33,9 +33,27 @@ return {
     },
 
     {
-        "refractalize/oil-git-status.nvim",
+        "malewicz1337/oil-git.nvim",
         dependencies = { "stevearc/oil.nvim" },
-        config = true,
+        opts = {
+            symbol_position = "signcolumn",
+            symbols = {
+                file = {
+                    added = "A", modified = "M", renamed = "R", deleted = "D",
+                    copied = "C", conflict = "!", untracked = "?", ignored = "·"
+                },
+                directory = {
+                    added = "A", modified = "M", renamed = "R", deleted = "D",
+                    copied = "C", conflict = "!", untracked = "?", ignored = "·"
+                },
+            },
+        }
+    },
+
+    {
+        "JezerM/oil-lsp-diagnostics.nvim",
+        dependencies = { "stevearc/oil.nvim" },
+        opts = {}
     },
 
     {
