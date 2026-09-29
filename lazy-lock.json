@@ -11,6 +11,7 @@
   "dropbar.nvim": { "branch": "master", "commit": "808ba31cde89aec8833e9789f5e04557cd31c9e1" },
   "edge": { "branch": "master", "commit": "7ec78c21bd8f0b2b0b47043bb1e730c561647c72" },
   "everforest-nvim": { "branch": "main", "commit": "a0e9edc57379e8feafc6ba207c26dbb12fc1b6d8" },
+  "fff": { "branch": "main", "commit": "89c19270ea2dfc20829a7429f72022571558093e" },
   "friendly-snippets": { "branch": "main", "commit": "b4d01b0fdf3c9a549961c2f9ffe8dc09be166219" },
   "fzf-lua": { "branch": "main", "commit": "02bc882f208f3481aa959dbbee8ce5edad2fd8b2" },
   "github-nvim-theme": { "branch": "main", "commit": "c106c9472154d6b2c74b74565616b877ae8ed31d" },
