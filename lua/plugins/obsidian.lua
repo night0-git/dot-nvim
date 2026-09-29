@@ -11,6 +11,9 @@ end
 return {
     "obsidian-nvim/obsidian.nvim",
     version = "*",
+    dependencies = {
+        "ibhagwan/fzf-lua", -- for the picker
+    },
     -- Only load this plugin when in the Obsidian vault, otherwise we load it by
     -- one of the keymaps below.
     event = {
