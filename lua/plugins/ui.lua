@@ -63,6 +63,7 @@ return {
             "rmagatti/auto-session",
             "ibhagwan/fzf-lua",
         },
+        lazy = true,
         config = function()
             local dashboard = require("alpha.themes.dashboard")
             local devicons = require("nvim-web-devicons")
