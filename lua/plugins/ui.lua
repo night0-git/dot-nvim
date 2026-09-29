@@ -185,6 +185,10 @@ return {
                 dashboard.section.footer,
             }
 
+            -- Expose the config, and let auto-session spawn the dashboard.
+            require("alpha").my_config = dashboard.config
+            dashboard.config.opts.autostart = false
+
             require("alpha").setup(dashboard.config)
         end,
     },

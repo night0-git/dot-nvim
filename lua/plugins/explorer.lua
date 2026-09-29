@@ -9,7 +9,8 @@ return {
         ---@module 'oil'
         ---@type oil.SetupOpts
         opts = {
-            default_file_explorer = true,
+            -- Prevent oil from hijacking restored session.
+            default_file_explorer = false,
             watch_for_changes = true,
             win_options = {
                 signcolumn = "yes:2",

@@ -11,15 +11,18 @@ return {
     opts = {
         cwd_change_handling = true,
         suppressed_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
-        bypass_save_filetypes = { "alpha" },
-        -- Close oil buffers before saving to prevent corrupted `oil://` buffer
-        -- paths (cause may be some kind of race condition).
-        pre_save_cmds = {
+        bypass_save_filetypes = { "alpha", "oil" },
+        -- Explicitly open any startup buffer here to ensure that they never
+        -- interfere with restored buffers.
+        no_restore_cmds = {
             function()
-                for _, buf in ipairs(vim.api.nvim_list_bufs()) do
-                    if vim.bo[buf].filetype == "oil" then
-                        vim.api.nvim_buf_delete(buf, { force = true })
+                if vim.fn.argc() ~= 0 then
+                    local first_arg = vim.fn.argv(0)
+                    if type(first_arg) == "string" and vim.fn.isdirectory(first_arg) == 1 then
+                        require("oil").open()
                     end
+                else
+                    require("alpha").start(true, require("alpha").my_config)
                 end
             end,
         },
