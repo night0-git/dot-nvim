@@ -83,11 +83,20 @@ return {
             local function get_mru_files(count)
                 local items = {}
                 for _, f in ipairs(vim.v.oldfiles or {}) do
-                    if #items >= count then break end
+                    if #items >= count then
+                        break
+                    end
                     if vim.fn.filereadable(f) == 1 then
-                        local icon = devicons.get_icon(vim.fn.fnamemodify(f, ":t"), vim.fn.fnamemodify(f, ":e"), { default = true }) or ""
+                        local icon = devicons.get_icon(
+                            vim.fn.fnamemodify(f, ":t"),
+                            vim.fn.fnamemodify(f, ":e"),
+                            { default = true }
+                        ) or ""
                         local label = string.format("%s  %s", icon, truncate(vim.fn.fnamemodify(f, ":~:."), WIDTH - 10))
-                        table.insert(items, btn(tostring(#items + 1), label, string.format("<cmd>edit %s<CR>", vim.fn.fnameescape(f))))
+                        table.insert(
+                            items,
+                            btn(tostring(#items + 1), label, string.format("<cmd>edit %s<CR>", vim.fn.fnameescape(f)))
+                        )
                     end
                 end
                 return items
@@ -98,33 +107,44 @@ return {
                 assert(count <= #keys, string.format("Project count (%d) exceeds available keys (%d)", count, #keys))
 
                 local ok, auto_session = pcall(require, "auto-session")
-                if not ok then return {} end
+                if not ok then
+                    return {}
+                end
 
                 local root = auto_session.get_root_dir()
                 local handle = vim.uv.fs_scandir(root)
-                if not handle then return {} end
+                if not handle then
+                    return {}
+                end
 
                 local files = {}
                 while true do
                     local name, type = vim.uv.fs_scandir_next(handle)
-                    if not name then break end
+                    if not name then
+                        break
+                    end
                     if type == "file" and name:match("%.vim$") then
                         local stat = vim.uv.fs_stat(root .. "/" .. name)
                         table.insert(files, { name = name, mtime = stat and stat.mtime and stat.mtime.sec or 0 })
                     end
                 end
-                table.sort(files, function(a, b) return a.mtime > b.mtime end)
+                table.sort(files, function(a, b)
+                    return a.mtime > b.mtime
+                end)
 
                 for i = 1, math.min(#files, count) do
                     local path = files[i].name:gsub("%.vim$", ""):gsub("%%(%x%x)", function(h)
                         return string.char(tonumber(h, 16))
                     end)
                     local label = string.format("󰉋  %s", truncate(vim.fn.fnamemodify(path, ":~"), WIDTH - 10))
-                    table.insert(items, btn(
-                        keys[i],
-                        label,
-                        string.format("<cmd>lua require('auto-session').restore_session(%q)<cr>", path)
-                    ))
+                    table.insert(
+                        items,
+                        btn(
+                            keys[i],
+                            label,
+                            string.format("<cmd>lua require('auto-session').restore_session(%q)<cr>", path)
+                        )
+                    )
                 end
                 return items
             end
@@ -144,11 +164,23 @@ return {
                 { type = "padding", val = 1 },
                 { type = "text", val = "Recent Projects", opts = { hl = "SpecialComment", position = "center" } },
                 { type = "padding", val = 1 },
-                { type = "group", val = function() return get_recent_projects(5) end, opts = { spacing = 0 } },
+                {
+                    type = "group",
+                    val = function()
+                        return get_recent_projects(5)
+                    end,
+                    opts = { spacing = 0 },
+                },
                 { type = "padding", val = 1 },
                 { type = "text", val = "Recent Files", opts = { hl = "SpecialComment", position = "center" } },
                 { type = "padding", val = 1 },
-                { type = "group", val = function() return get_mru_files(5) end, opts = { spacing = 0 } },
+                {
+                    type = "group",
+                    val = function()
+                        return get_mru_files(5)
+                    end,
+                    opts = { spacing = 0 },
+                },
                 { type = "padding", val = 1 },
                 dashboard.section.footer,
             }
@@ -183,9 +215,20 @@ return {
         "m4xshen/smartcolumn.nvim",
         opts = {
             disabled_filetypes = {
-                "help", "text", "markdown", "lazy", "mason", "alpha",
-                "NvimTree", "lazy", "mason", "checkhealth", "lspinfo",
-                "trouble", "fish", "qf",
+                "help",
+                "text",
+                "markdown",
+                "lazy",
+                "mason",
+                "alpha",
+                "NvimTree",
+                "lazy",
+                "mason",
+                "checkhealth",
+                "lspinfo",
+                "trouble",
+                "fish",
+                "qf",
             },
         },
     },

@@ -11,7 +11,7 @@ return {
                 severity_sort = true,
             })
 
-            vim.lsp.config('basedpyright', {
+            vim.lsp.config("basedpyright", {
                 settings = {
                     basedpyright = {
                         analysis = {
@@ -23,14 +23,14 @@ return {
                     },
                 },
             })
-        end
+        end,
     },
 
     {
         "mason-org/mason.nvim",
         opts = {
             ui = { border = "rounded" },
-        }
+        },
     },
 
     {
@@ -40,12 +40,13 @@ return {
                 "lua_ls",
                 "clangd",
                 "rust_analyzer",
-                "basedpyright", "ruff",
+                "basedpyright",
+                "ruff",
             },
         },
         dependencies = {
             "mason-org/mason.nvim",
             "neovim/nvim-lspconfig",
         },
-    }
+    },
 }

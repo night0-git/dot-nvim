@@ -26,10 +26,14 @@ return {
         },
 
         keys = {
-            { "<leader>o", function()
-                require('oil').toggle_float()
-            end, desc = "Open file explorer (Oil)" },
-        }
+            {
+                "<leader>o",
+                function()
+                    require("oil").toggle_float()
+                end,
+                desc = "Open file explorer (Oil)",
+            },
+        },
     },
 
     {
@@ -39,21 +43,33 @@ return {
             symbol_position = "signcolumn",
             symbols = {
                 file = {
-                    added = "A", modified = "M", renamed = "R", deleted = "D",
-                    copied = "C", conflict = "!", untracked = "?", ignored = "·"
+                    added = "A",
+                    modified = "M",
+                    renamed = "R",
+                    deleted = "D",
+                    copied = "C",
+                    conflict = "!",
+                    untracked = "?",
+                    ignored = "·",
                 },
                 directory = {
-                    added = "A", modified = "M", renamed = "R", deleted = "D",
-                    copied = "C", conflict = "!", untracked = "?", ignored = "·"
+                    added = "A",
+                    modified = "M",
+                    renamed = "R",
+                    deleted = "D",
+                    copied = "C",
+                    conflict = "!",
+                    untracked = "?",
+                    ignored = "·",
                 },
             },
-        }
+        },
     },
 
     {
         "JezerM/oil-lsp-diagnostics.nvim",
         dependencies = { "stevearc/oil.nvim" },
-        opts = {}
+        opts = {},
     },
 
     {
@@ -66,11 +82,11 @@ return {
                 indent_markers = { enable = true },
             },
             update_focused_file = {
-                -- Expand tree to reveal current file. 
+                -- Expand tree to reveal current file.
                 enable = true,
             },
             view = {
-                width = 25
+                width = 25,
             },
             tab = {
                 -- Keep tree consistent across tabs.
@@ -84,6 +100,6 @@ return {
 
         keys = {
             { "<leader>e", "<cmd>NvimTreeToggle<cr>", desc = "Toggle file explorer (nvim-tree)" },
-        }
-    }
+        },
+    },
 }

@@ -82,7 +82,9 @@ vim.api.nvim_create_autocmd({ "BufReadPost", "FileReadPost" }, {
     callback = function(args)
         -- UFO loads asynchronously so we delay the execution.
         vim.defer_fn(function()
-            if not vim.api.nvim_buf_is_valid(args.buf) then return end
+            if not vim.api.nvim_buf_is_valid(args.buf) then
+                return
+            end
 
             local first_line = vim.api.nvim_buf_get_lines(args.buf, 0, 1, false)[1]
             if first_line == "---" then

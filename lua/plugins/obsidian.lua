@@ -11,7 +11,7 @@ end
 return {
     "obsidian-nvim/obsidian.nvim",
     version = "*",
-    -- Only load this plugin when in the Obsidian vault, otherwise we load it by 
+    -- Only load this plugin when in the Obsidian vault, otherwise we load it by
     -- one of the keymaps below.
     event = {
         "BufReadPre " .. obsidian_path .. "/**.md",

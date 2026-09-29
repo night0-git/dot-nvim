@@ -12,7 +12,7 @@ return {
             on_create = function()
                 vim.keymap.set("t", "<C-j>", "<C-j>", { buffer = true, nowait = true })
                 vim.keymap.set("t", "<C-k>", "<C-k>", { buffer = true, nowait = true })
-            end
+            end,
         },
         colorschemes = {
             actions = {
@@ -41,5 +41,5 @@ return {
         { "<leader>fg", "<cmd>FzfLua git_files<cr>", desc = "Find git files" },
         { "<leader>fb", "<cmd>FzfLua buffers<cr>", desc = "Find buffers" },
         { "<leader>fc", "<cmd>FzfLua colorschemes<cr>", desc = "Find colorschemes" },
-    }
+    },
 }

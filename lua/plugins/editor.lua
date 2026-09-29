@@ -1,14 +1,14 @@
 return {
     {
-        'windwp/nvim-autopairs',
+        "windwp/nvim-autopairs",
         event = "InsertEnter",
-        opts = {}
+        opts = {},
     },
 
     {
         "kylechui/nvim-surround",
         event = "VeryLazy",
-        opts = {}
+        opts = {},
 
         -- The three "core" operations of add/delete/change can be done with the keymaps
         -- ys{motion}{char}, ds{char}, and cs{target}{replacement}, respectively. For the
@@ -32,8 +32,8 @@ return {
         "sindrets/winshift.nvim",
         opts = {
             keymaps = {
-                disable_defaults = true
-            }
+                disable_defaults = true,
+            },
         },
         keys = {
             { "<C-M-Up>", "<cmd>WinShift up<cr>", desc = "Move window up" },
@@ -41,17 +41,17 @@ return {
             { "<C-M-Left>", "<cmd>WinShift left<cr>", desc = "Move window left" },
             { "<C-M-Right>", "<cmd>WinShift right<cr>", desc = "Move window right" },
             { "<C-M-s>", "<cmd>WinShift swap<cr>", desc = "Swap window" },
-        }
+        },
     },
 
     {
         "kevinhwang91/nvim-ufo",
-        dependencies = 'kevinhwang91/promise-async',
+        dependencies = "kevinhwang91/promise-async",
         lazy = false, -- lazy-load causes a lot of errors
         opts = {
             provider_selector = function()
-                return {'treesitter', 'indent'}
-            end
+                return { "treesitter", "indent" }
+            end,
         },
         config = function(_, opts)
             vim.opt.foldcolumn = "0"
@@ -62,9 +62,21 @@ return {
             require("ufo").setup(opts)
         end,
         keys = {
-            { "zR", function() require("ufo").openAllFolds() end, desc = "Open all folds" },
-            { "zM", function() require("ufo").closeAllFolds() end, desc = "Close all folds" },
-        }
+            {
+                "zR",
+                function()
+                    require("ufo").openAllFolds()
+                end,
+                desc = "Open all folds",
+            },
+            {
+                "zM",
+                function()
+                    require("ufo").closeAllFolds()
+                end,
+                desc = "Close all folds",
+            },
+        },
     },
 
     {
@@ -146,7 +158,7 @@ return {
             focus = true,
             win = {
                 size = 20,
-            }
+            },
         },
         cmd = "Trouble",
         keys = {

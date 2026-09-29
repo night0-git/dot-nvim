@@ -30,7 +30,6 @@ function M.set_and_save_colorscheme(scheme)
         return false, msg
     end
 
-
     local state_file = io.open(state_path, "w")
     if not state_file then
         return false, "failed to write colorscheme file"
@@ -41,4 +40,3 @@ function M.set_and_save_colorscheme(scheme)
 end
 
 return M
-

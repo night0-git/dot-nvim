@@ -1,24 +1,24 @@
 return {
     {
-        'saghen/blink.cmp',
-        dependencies = { 'rafamadriz/friendly-snippets' },
+        "saghen/blink.cmp",
+        dependencies = { "rafamadriz/friendly-snippets" },
 
-        version = '1.*',
+        version = "1.*",
 
         ---@module 'blink.cmp'
         ---@type blink.cmp.Config
         opts = {
             keymap = {
-                preset = 'enter',
-                ['<Tab>'] = { 'select_next', 'snippet_forward', 'fallback' },
-                ['<S-Tab>'] = { 'select_prev', 'snippet_backward', 'fallback' },
+                preset = "enter",
+                ["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
+                ["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
             },
 
             completion = {
                 list = {
                     selection = {
                         preselect = false,
-                    }
+                    },
                 },
                 menu = {
                     draw = {
@@ -45,9 +45,9 @@ return {
                     list = {
                         selection = {
                             preselect = false,
-                        }
+                        },
                     },
-                }
+                },
             },
 
             sources = {
@@ -61,7 +61,7 @@ return {
                 },
             },
         },
-        opts_extend = { "sources.default" }
+        opts_extend = { "sources.default" },
     },
 
     {
@@ -74,5 +74,5 @@ return {
                 { path = "${3rd}/luv/library", words = { "vim%.uv" } },
             },
         },
-    }
+    },
 }
