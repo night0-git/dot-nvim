@@ -12,7 +12,7 @@ return {
                 lualine_x = {},
                 lualine_y = { "encoding", "fileformat", "filetype" },
             },
-            extensions = { "nvim-tree", "toggleterm", "lazy", "oil" },
+            extensions = { "nvim-tree", "lazy", "oil" },
         },
     },
 
@@ -227,7 +227,6 @@ return {
                 "checkhealth",
                 "lspinfo",
                 "trouble",
-                "fish",
                 "qf",
             },
         },

@@ -56,25 +56,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end,
 })
 
--- Track fish bind mode and interactive TUI per terminal buffer.
-vim.api.nvim_create_autocmd("TermRequest", {
-    desc = "Track shell bind mode via OSC sequences",
-    group = augroup,
-    callback = function(args)
-        -- In neovim, args.data is either the raw string itself or a table
-        -- containing { sequence = "..." }.
-        local seq = type(args.data) == "table" and (args.data.sequence or args.data.request) or args.data
-        if type(seq) ~= "string" then
-            return
-        end
-
-        local mode = seq:match("fish_mode;([%w_-]+)")
-        if mode then
-            vim.b[args.buf].shell_mode = mode
-        end
-    end,
-})
-
 vim.api.nvim_create_autocmd({ "BufReadPost", "FileReadPost" }, {
     desc = "Auto fold Obsidian's frontmatter",
     group = augroup,

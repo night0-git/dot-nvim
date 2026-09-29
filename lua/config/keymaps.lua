@@ -88,7 +88,7 @@ end
 
 -- Close floating window with Esc key. Any window can be assigned a tag 'float'
 -- to be closed by Esc.
-vim.keymap.set("n", "<Esc>", function()
+map("n", "<Esc>", function()
     local win = vim.api.nvim_get_current_win()
     local config = vim.api.nvim_win_get_config(win)
 
@@ -97,28 +97,14 @@ vim.keymap.set("n", "<Esc>", function()
     else
         feed_keys("<Esc>")
     end
-end, { desc = "Close floating window" })
-
--- Decide between exitting fish's insert mode or nvim's terminal mode. This and
--- the above keymap allow for presisng Esc multiple times to close a floating
--- terminal in fish vi mode.
-vim.keymap.set("t", "<Esc>", function()
-    local buf = vim.api.nvim_get_current_buf()
-    local shell_mode = vim.b[buf].shell_mode
-
-    if shell_mode == "default" then
-        feed_keys([[<C-\><C-n>]])
-    else -- either shell_mode is 'insert' or the shell is not fish
-        feed_keys("<Esc>")
-    end
-end, { desc = "Exit terminal mode when fish shell is in normal mode" })
+end, "Close floating window")
 
 -- Clear copilot suggestions.
-vim.keymap.set("i", "<Esc>", function()
+map("i", "<Esc>", function()
     if not require("copilot-lsp.nes").clear() then
         feed_keys("<Esc>")
     end
-end, { desc = "Clear copilot suggestion" })
+end, "Clear copilot suggestion")
 
 M.map = map
 return M
