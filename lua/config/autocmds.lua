@@ -80,20 +80,39 @@ vim.api.nvim_create_autocmd("ColorScheme", {
     group = augroup,
     callback = function()
         local normal = vim.api.nvim_get_hl(0, { name = "Normal" })
-        local float = vim.api.nvim_get_hl(0, { name = "NormalFloat" })
-
-        -- If NormalFloat bg is undefined, inherit from Normal.
-        if not float.bg then
-            vim.api.nvim_set_hl(0, "NormalFloat", { bg = normal.bg })
-        end
-
-        -- If FloatBorder fg is undefined, use Comment color for a subtle
-        -- border.
         local border = vim.api.nvim_get_hl(0, { name = "FloatBorder" })
-        if not border.fg then
-            vim.api.nvim_set_hl(0, "FloatBorder", {
-                fg = vim.api.nvim_get_hl(0, { name = "Comment" }).fg,
-            })
+
+        -- Make floating windows have the same background as normal background.
+        vim.api.nvim_set_hl(0, "NormalFloat", { bg = normal.bg })
+        -- Ensure consistency between border and background.
+        vim.api.nvim_set_hl(0, "FloatBorder", {
+            bg = normal.bg,
+            fg = border.fg or normal.fg, -- preserve explicit foreground
+        })
+
+        -- NOTE: This part disables all background colors for all columns
+        -- (number, signs...).
+        local columns = {
+            "SignColumn",
+            "LineNr",
+            "CursorLineNr",
+            "GitSignsAdd",
+            "GitSignsChange",
+            "GitSignsDelete",
+            "GitSignsTopdelete",
+            "GitSignsChangedelete",
+            "GitSignsUntracked",
+            "DiagnosticSignError",
+            "DiagnosticSignWarn",
+            "DiagnosticSignInfo",
+            "DiagnosticSignHint",
+        }
+        for _, col in ipairs(columns) do
+            local hl = vim.api.nvim_get_hl(0, { name = col, link = false })
+            if hl.bg then
+                hl.bg = nil
+                vim.api.nvim_set_hl(0, col, hl --[[@as vim.api.keyset.highlight]])
+            end
         end
     end,
 })
