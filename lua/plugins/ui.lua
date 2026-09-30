@@ -61,7 +61,6 @@ return {
         dependencies = {
             "nvim-tree/nvim-web-devicons",
             "rmagatti/auto-session",
-            "ibhagwan/fzf-lua",
         },
         lazy = true,
         config = function()

@@ -2,6 +2,7 @@ return {
     {
         "ibhagwan/fzf-lua",
         dependencies = { "nvim-tree/nvim-web-devicons" },
+        lazy = false, -- used as picker for many other plugins
         ---@module "fzf-lua"
         ---@type fzf-lua.Config|{}
         ---@diagnostic disable: missing-fields
