@@ -11,6 +11,14 @@ return {
                 severity_sort = true,
             })
 
+            local capabilities = vim.lsp.protocol.make_client_capabilities()
+            -- This is disabled by default on Linux.
+            capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = true
+            -- Apply to ALL LSP servers.
+            vim.lsp.config("*", {
+                capabilities = capabilities,
+            })
+
             vim.lsp.config("basedpyright", {
                 settings = {
                     basedpyright = {
