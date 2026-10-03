@@ -43,6 +43,7 @@ return {
 
     {
         "Bekaboo/dropbar.nvim",
+        lazy = false,
         opts = function(_, opts)
             local default_enable = require("dropbar.configs").opts.bar.enable
 
@@ -54,6 +55,29 @@ return {
                 return default_enable(buf, win, info)
             end
         end,
+        keys = {
+            {
+                "<leader>;",
+                function()
+                    require("dropbar.api").pick()
+                end,
+                desc = "Pick symbols in winbar",
+            },
+            {
+                "[;",
+                function()
+                    require("dropbar.api").goto_context_start()
+                end,
+                desc = "Go to start of current context",
+            },
+            {
+                "];",
+                function()
+                    require("dropbar.api").select_next_context()
+                end,
+                desc = "Select next context",
+            },
+        },
     },
 
     {
