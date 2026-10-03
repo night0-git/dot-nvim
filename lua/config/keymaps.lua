@@ -106,5 +106,21 @@ map("i", "<Esc>", function()
     end
 end, "Clear copilot suggestion")
 
+map("v", "<leader>y", function()
+    local start_line = vim.fn.line("v")
+    local end_line = vim.fn.line(".")
+
+    if start_line > end_line then
+        start_line, end_line = end_line, start_line
+    end
+
+    local file = vim.fn.expand("%:~:.")
+    local location = start_line == end_line and string.format("@%s:%d", file, start_line)
+        or string.format("@%s:%d-%d", file, start_line, end_line)
+
+    vim.fn.setreg("+", location)
+    feed_keys("<Esc>")
+end, "Copy file path and lines")
+
 M.map = map
 return M
