@@ -41,20 +41,31 @@ return {
         },
     },
 
-    {
+    { -- Maps and auto enables any Mason-installed LSP server.
         "mason-org/mason-lspconfig.nvim",
-        opts = {
-            ensure_installed = {
-                "lua_ls",
-                "clangd",
-                "rust_analyzer",
-                "basedpyright",
-                "ruff",
-            },
-        },
         dependencies = {
             "mason-org/mason.nvim",
             "neovim/nvim-lspconfig",
+        },
+        opts = {},
+    },
+
+    { -- Auto installs LSP servers, linters, and formatters.
+        "https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim",
+        dependencies = {
+            "mason-org/mason.nvim",
+        },
+        opts = {
+            ensure_installed = {
+                "lua-language-server",
+                "stylua",
+                "luacheck",
+                "clangd",
+                "rust-analyzer",
+                "basedpyright",
+                "ruff",
+                "prettier",
+            },
         },
     },
 }
