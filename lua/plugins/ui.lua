@@ -12,7 +12,7 @@ return {
                 lualine_x = {},
                 lualine_y = { "encoding", "fileformat", "filetype" },
             },
-            extensions = { "nvim-tree", "lazy", "oil" },
+            extensions = { "lazy", "oil" },
         },
     },
 
@@ -27,7 +27,7 @@ return {
     --             show_buffer_close_icons = false,
     --             offsets = {
     --                 {
-    --                     filetype = "NvimTree",
+    --                     filetype = "oil",
     --                     text = "File Explorer",
     --                     text_align = "center",
     --                     separator = true,
@@ -249,7 +249,6 @@ return {
                 "lazy",
                 "mason",
                 "alpha",
-                "NvimTree",
                 "lazy",
                 "mason",
                 "checkhealth",

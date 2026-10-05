@@ -73,34 +73,4 @@ return {
         opts = {},
     },
 
-    {
-        "https://github.com/nvim-tree/nvim-tree.lua",
-        dependencies = { "nvim-tree/nvim-web-devicons" },
-        lazy = false,
-        opts = {
-            renderer = {
-                group_empty = true,
-                indent_markers = { enable = true },
-            },
-            update_focused_file = {
-                -- Expand tree to reveal current file.
-                enable = true,
-            },
-            view = {
-                width = 25,
-            },
-            tab = {
-                -- Keep tree consistent across tabs.
-                sync = { open = true, close = true },
-            },
-            hijack_directories = {
-                enable = false,
-            },
-            sync_root_with_cwd = true,
-        },
-
-        keys = {
-            { "<leader>e", "<cmd>NvimTreeToggle<cr>", desc = "Toggle file explorer (nvim-tree)" },
-        },
-    },
 }
