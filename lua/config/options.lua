@@ -33,7 +33,7 @@ vim.opt.wrap = false
 vim.opt.signcolumn = "yes"
 
 -- https://github.com/rmagatti/auto-session#%EF%B8%8F-configuration
-vim.opt.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+vim.opt.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
 
 if vim.g.neovide then
     vim.g.neovide_cursor_animation_length = 0
