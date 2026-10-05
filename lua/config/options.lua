@@ -15,6 +15,7 @@ vim.opt.splitright = true
 vim.opt.textwidth = 80
 -- Filetypes like markdown will re-add 't' through their ftplugin.
 vim.opt.formatoptions:remove("t") -- not auto-wrap text (code)
+vim.opt.formatoptions:append("c") -- auto-wrap comments
 vim.opt.formatoptions:append("a") -- watch for changes to re-format
 vim.opt.formatoptions:append("w") -- paragraph must end with a non-white character
 
