@@ -3,7 +3,7 @@ vim.g.loaded_netrwPlugin = 1
 
 return {
     {
-        "stevearc/oil.nvim",
+        "night0-git/oil.nvim",
         dependencies = { "nvim-tree/nvim-web-devicons" },
         lazy = false,
         ---@module 'oil'
@@ -39,7 +39,7 @@ return {
 
     {
         "malewicz1337/oil-git.nvim",
-        dependencies = { "stevearc/oil.nvim" },
+        dependencies = { "night0-git/oil.nvim" },
         opts = {
             symbol_position = "signcolumn",
             symbols = {
@@ -69,8 +69,7 @@ return {
 
     {
         "JezerM/oil-lsp-diagnostics.nvim",
-        dependencies = { "stevearc/oil.nvim" },
+        dependencies = { "night0-git/oil.nvim" },
         opts = {},
     },
-
 }
