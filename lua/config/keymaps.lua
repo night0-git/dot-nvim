@@ -106,21 +106,35 @@ map("i", "<Esc>", function()
     end
 end, "Clear copilot suggestion")
 
-map("v", "<leader>y", function()
-    local start_line = vim.fn.line("v")
-    local end_line = vim.fn.line(".")
+local function smart_copy(file_name_pattern)
+    local mode = vim.api.nvim_get_mode().mode
+    local file = vim.fn.expand(file_name_pattern)
 
-    if start_line > end_line then
-        start_line, end_line = end_line, start_line
+    if mode == "n" then -- copy file name
+        vim.fn.setreg("+", file)
+    else -- copy file name with line numbers
+        local start_line = vim.fn.line("v")
+        local end_line = vim.fn.line(".")
+
+        if start_line > end_line then
+            start_line, end_line = end_line, start_line
+        end
+
+        local location = start_line == end_line and string.format("@%s:%d", file, start_line)
+            or string.format("@%s:%d-%d", file, start_line, end_line)
+
+        vim.fn.setreg("+", location)
+        feed_keys("<Esc>")
     end
+end
 
-    local file = vim.fn.expand("%:~:.")
-    local location = start_line == end_line and string.format("@%s:%d", file, start_line)
-        or string.format("@%s:%d-%d", file, start_line, end_line)
+map({ "n", "v" }, "<leader>y", function()
+    smart_copy("%:p:.")
+end, "Smart copy (relative)")
 
-    vim.fn.setreg("+", location)
-    feed_keys("<Esc>")
-end, "Copy file path and lines")
+map({ "n", "v" }, "<leader>Y", function()
+    smart_copy("%:p")
+end, "Smart copy (absolute)")
 
 M.map = map
 return M
