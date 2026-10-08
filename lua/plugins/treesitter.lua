@@ -19,6 +19,7 @@ local parsers = {
     "css",
     "javascript",
     "typescript",
+    "latex",
 }
 
 return {

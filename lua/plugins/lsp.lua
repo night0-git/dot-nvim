@@ -65,6 +65,7 @@ return {
                 "basedpyright",
                 "ruff",
                 "prettier",
+                "mmdc",
             },
         },
     },
