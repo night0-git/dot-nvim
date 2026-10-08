@@ -116,3 +116,15 @@ vim.api.nvim_create_autocmd("ColorScheme", {
         end
     end,
 })
+
+vim.api.nvim_create_autocmd("FileChangedShell", {
+    desc = "Suppress FileChangedShell warnings",
+    group = augroup,
+    callback = function()
+        if vim.v.fcs_reason == "conflict" then
+            -- If we have unsaved changes, suppress the prompt and keep our changes.
+            vim.v.fcs_choice = ""
+            vim.notify("File changed on disk. Use :e! to reload or :w to overwrite.", vim.log.levels.WARN)
+        end
+    end,
+})
