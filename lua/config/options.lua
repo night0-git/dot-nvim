@@ -1,6 +1,7 @@
 -- TODO: tab options and font size
 
 vim.opt.clipboard = vim.env.SSH_CONNECTION and "" or "unnamedplus"
+vim.opt.swapfile = false
 
 vim.opt.guifont = "JetBrainsMono Nerd Font:h12"
 vim.opt.termguicolors = true
