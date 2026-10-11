@@ -3,7 +3,6 @@ return {
         "https://github.com/neovim/nvim-lspconfig",
         config = function()
             vim.diagnostic.config({
-                virtual_text = true,
                 float = {
                     source = true,
                     header = "",
