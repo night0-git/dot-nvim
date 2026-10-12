@@ -35,7 +35,7 @@ return {
         end,
         ft = { "markdown" },
         keys = {
-            { "<leader>mp", "<cmd>MarkdownPreviewToggle<cr>", desc = "Markdown Preview" },
+            { "<leader>mp", "<cmd>MarkdownPreview<cr>", desc = "Markdown Preview" },
         },
     },
 }
