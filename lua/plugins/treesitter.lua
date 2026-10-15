@@ -1,25 +1,5 @@
-local parsers = {
-    "lua",
-    "c",
-    "cpp",
-    "rust",
-    "python",
-    "markdown",
-    "markdown_inline",
-    "yaml",
-    "bash",
-    "json",
-    "toml",
-    "make",
-    "cmake",
-    "dockerfile",
-    "gitcommit",
-    "gitignore",
-    "html",
-    "css",
-    "javascript",
-    "typescript",
-    "latex",
+local treesitter_indent = {
+    python = true,
 }
 
 return {
@@ -27,23 +7,30 @@ return {
     lazy = false,
     build = ":TSUpdate",
     config = function()
-        require("nvim-treesitter").setup()
+        local ts = require("nvim-treesitter")
 
-        require("nvim-treesitter").install(parsers)
+        ts.setup()
 
         vim.api.nvim_create_autocmd("FileType", {
-            pattern = parsers,
             callback = function(event)
-                -- Enable highlighting.
-                vim.treesitter.start()
+                local ft = event.match
+                local lang = vim.treesitter.language.get_lang(ft)
 
-                -- Enable indenting.
-                local treesitter_indent = {
-                    python = true,
-                }
-                if treesitter_indent[event.match] then
+                if not lang or not vim.list_contains(ts.get_available(), lang) then
+                    return
+                end
+
+                -- Enable indenting (experimental).
+                if treesitter_indent[ft] then
                     vim.bo[event.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
                 end
+
+                -- For installed parsers this will finishe instantly.
+                ts.install({ lang }):await(function()
+                    if vim.api.nvim_buf_is_valid(event.buf) then
+                        vim.treesitter.start(event.buf, lang)
+                    end
+                end)
             end,
         })
     end,
