@@ -32,13 +32,12 @@ return {
     },
 
     {
-        "iamcco/markdown-preview.nvim",
+        "sammaji/markdown-preview.nvim",
         cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-        build = "cd app && npm install",
-        init = function()
-            vim.g.mkdp_filetypes = { "markdown" }
-        end,
         ft = { "markdown" },
+        opts = {
+            auto_close = false,
+        },
         keys = {
             { "<leader>mp", "<cmd>MarkdownPreview<cr>", desc = "Markdown Preview" },
         },
