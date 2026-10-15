@@ -18,6 +18,11 @@ return {
                 width = "block",
                 border = "thin",
             },
+            html = {
+                comment = {
+                    conceal = false,
+                },
+            },
             -- nvim's popup windows are markdown as well, and we don't want them to
             -- be affected.
             overrides = {
