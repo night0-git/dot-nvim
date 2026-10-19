@@ -6,7 +6,7 @@ return {
     },
     keys = {
         { "]c", "<cmd>Gitsigns next_hunk<CR>", desc = "Next hunk" },
-        { "[c", "<cmd>Gitsigns next_hunk<CR>", desc = "Previous hunk" },
+        { "[c", "<cmd>Gitsigns prev_hunk<CR>", desc = "Previous hunk" },
         { "<leader>hp", "<cmd>Gitsigns preview_hunk_inline<CR>", desc = "Preview hunk" },
     },
 }
