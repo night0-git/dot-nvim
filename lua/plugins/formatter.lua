@@ -7,6 +7,8 @@ return {
             lua = { "stylua" },
             python = { "ruff_format" },
             markdown = { "prettier" },
+            c = { "clang-format" },
+            cpp = { "clang-format" },
         },
         -- This will apply for conform.format(), and also format_on_save and
         -- format_after_save.

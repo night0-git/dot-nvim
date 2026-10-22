@@ -30,6 +30,12 @@ return {
                     },
                 },
             })
+
+            vim.lsp.config("clangd", {
+                init_options = {
+                    fallbackFlags = { "-std=c++23" },
+                },
+            })
         end,
     },
 
@@ -60,11 +66,13 @@ return {
                 "stylua",
                 "luacheck",
                 "clangd",
+                "clang-format",
                 "rust-analyzer",
                 "basedpyright",
                 "ruff",
                 "prettier",
                 "mmdc",
+                "vtsls",
             },
         },
     },
