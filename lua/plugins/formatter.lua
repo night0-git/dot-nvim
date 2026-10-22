@@ -7,6 +7,9 @@ return {
             lua = { "stylua" },
             python = { "ruff_format" },
             markdown = { "prettier" },
+            javascript = { "prettier" },
+            typescript = { "prettier" },
+            html = { "prettier" },
             c = { "clang-format" },
             cpp = { "clang-format" },
         },
@@ -16,15 +19,6 @@ return {
             lsp_format = "fallback",
             timeout_ms = 500,
         },
-        format_on_save = function(bufnr)
-            local ignore_filetypes = { "markdown" }
-
-            if vim.tbl_contains(ignore_filetypes, vim.bo[bufnr].filetype) then
-                return
-            end
-
-            return {}
-        end,
     },
     keys = {
         {
