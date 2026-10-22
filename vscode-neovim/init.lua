@@ -20,12 +20,10 @@ vim.opt.shiftwidth = 4
 vim.opt.scrolloff = 4
 vim.opt.wrap = false
 
-
-
 local function map(mode, key, func, desc, extra_opts)
-    local opts = vim.tbl_extend("force", extra_opts or {}, { desc = desc or "" })
+  local opts = vim.tbl_extend("force", extra_opts or {}, { desc = desc or "" })
 
-    vim.keymap.set(mode, key, func, opts)
+  vim.keymap.set(mode, key, func, opts)
 end
 
 -- Swap "L" for "J", "H" for "K".

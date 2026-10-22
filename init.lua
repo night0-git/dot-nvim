@@ -8,7 +8,7 @@ require("config.lazy_help")
 -- Active theme is loaded here by reading from a state file.
 local success, msg = require("theme_manager").load_colorscheme()
 if not success then
-    vim.notify("load_colorscheme: " .. msg, vim.log.levels.WARN)
+  vim.notify("load_colorscheme: " .. msg, vim.log.levels.WARN)
 end
 
 -- Prevent accidental quit on last window: :q! will not quit (transformed to
