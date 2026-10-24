@@ -73,6 +73,8 @@ return {
         "prettier",
         "mmdc",
         "vtsls",
+        "html-lsp",
+        "css-lsp",
       },
     },
   },
