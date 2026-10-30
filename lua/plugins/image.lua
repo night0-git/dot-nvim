@@ -6,14 +6,6 @@ end
 
 return {
   {
-    "folke/snacks.nvim",
-    ---@type snacks.Config
-    opts = {
-      image = {},
-    },
-  },
-
-  {
     "HakonHarnes/img-clip.nvim",
     event = "VeryLazy",
     opts = {
