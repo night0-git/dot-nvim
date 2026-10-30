@@ -26,11 +26,6 @@ local function map(mode, key, func, desc, extra_opts)
   vim.keymap.set(mode, key, func, opts)
 end
 
--- Swap "L" for "J", "H" for "K".
-map({ "n", "v" }, "J", "L")
-map({ "n", "v" }, "L", "J")
-map({ "n", "v" }, "K", "H")
-map({ "n", "v" }, "H", "K")
 -- Swap "p" for "P" to easily paste without overwriting register.
 map({ "x" }, "p", "P")
 map({ "x" }, "P", "p")

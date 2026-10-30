@@ -23,7 +23,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     local map = require("config.keymaps").map
     local lsp = vim.lsp
 
-    map("n", "H", function()
+    map("n", "K", function()
       lsp.buf.hover()
     end, "LSP hover documentation", opts)
     map("n", "gd", function()
