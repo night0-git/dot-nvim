@@ -16,31 +16,6 @@ return {
     },
   },
 
-  -- {
-  --     "https://github.com/akinsho/bufferline.nvim",
-  --     dependencies = "nvim-tree/nvim-web-devicons",
-  --     lazy = false,
-  --     opts = {
-  --         options = {
-  --             mode = "tabs",
-  --             show_buffer_icons = false,
-  --             show_buffer_close_icons = false,
-  --             offsets = {
-  --                 {
-  --                     filetype = "oil",
-  --                     text = "File Explorer",
-  --                     text_align = "center",
-  --                     separator = true,
-  --                 },
-  --             },
-  --         },
-  --     },
-  --     keys = {
-  --         { "<C-n>", "<cmd>BufferLineCycleNext<cr>", desc = "Cycle to next buffer" },
-  --         { "<C-p>", "<cmd>BufferLineCyclePrev<cr>", desc = "Cycle to previous buffer" },
-  --     }
-  -- },
-
   {
     "Bekaboo/dropbar.nvim",
     lazy = false,

@@ -8,6 +8,7 @@ return {
     image = { enabled = true },
     quickfile = { enabled = true },
     notifier = { enabled = true },
+    rename = { enabled = true },
     indent = {
       enabled = true,
       indent = { -- show subtle indentation levels
