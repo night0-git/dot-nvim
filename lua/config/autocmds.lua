@@ -27,32 +27,25 @@ vim.api.nvim_create_autocmd("LspAttach", {
       lsp.buf.hover()
     end, "LSP hover documentation", opts)
     map("n", "gd", function()
-      require("fzf-lua").lsp_definitions()
+      Snacks.picker.lsp_definitions()
     end, "LSP definitions", opts)
     map("n", "gD", function()
-      require("fzf-lua").lsp_declarations()
+      Snacks.picker.lsp_declarations()
     end, "LSP declarations", opts)
     map("n", "ga", function()
-      require("fzf-lua").lsp_code_actions({
-        filter = function(action)
-          return action.edit ~= nil or action.command ~= nil
-        end,
-        silent = true,
-      })
+      vim.lsp.buf.code_action()
     end, "LSP code actions", opts)
     map("n", "gr", function()
-      require("fzf-lua").lsp_references()
+      Snacks.picker.lsp_references()
     end, "LSP references", opts)
     map("n", "<leader>fd", function()
-      require("fzf-lua").lsp_workspace_diagnostics()
+      Snacks.picker.diagnostics()
     end, "LSP diagnostics", opts)
     map("n", "<leader>fD", function()
-      require("fzf-lua").lsp_document_diagnostics()
+      Snacks.picker.diagnostics_buffer()
     end, "LSP buffer diagnostics", opts)
 
-    map("n", "<leader>uh", function()
-      lsp.inlay_hint.enable(not lsp.inlay_hint.is_enabled())
-    end, "Toggle inlay hint", opts)
+    Snacks.toggle.inlay_hints():map("<leader>uh", opts)
   end,
 })
 

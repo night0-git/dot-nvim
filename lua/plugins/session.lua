@@ -11,7 +11,7 @@ return {
   opts = {
     cwd_change_handling = true,
     suppressed_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
-    bypass_save_filetypes = { "alpha", "oil" },
+    bypass_save_filetypes = { "oil" },
     -- Explicitly open any startup buffer here to ensure that they never
     -- interfere with restored buffers.
     no_restore_cmds = {
@@ -21,8 +21,6 @@ return {
           if type(first_arg) == "string" and vim.fn.isdirectory(first_arg) == 1 then
             require("oil").open()
           end
-        else
-          require("alpha").start(true, require("alpha").my_config)
         end
       end,
     },

@@ -38,6 +38,5 @@ end, {
 })
 
 vim.api.nvim_create_user_command("Q", function(opts)
-  local bang = opts.bang and "!" or ""
-  vim.cmd("bdelete" .. bang)
-end, { bang = true })
+  Snacks.bufdelete({ force = opts.bang })
+end, { bang = true, desc = "Delete current buffer without closing window" })
