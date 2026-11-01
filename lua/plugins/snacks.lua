@@ -33,10 +33,13 @@ return {
     picker = {
       enabled = true,
       ui_select = true,
-      layout = {
-        preset = "telescope",
-      },
       sources = {
+        files = {
+          hidden = true,
+        },
+        grep = {
+          hidden = true,
+        },
         colorschemes = {
           confirm = function(picker, item)
             picker:close()
