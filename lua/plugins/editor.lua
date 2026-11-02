@@ -189,4 +189,9 @@ return {
     "windwp/nvim-ts-autotag",
     opts = {},
   },
+
+  {
+    "NMAC427/guess-indent.nvim",
+    opts = {},
+  },
 }
