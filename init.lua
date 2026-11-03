@@ -12,7 +12,8 @@ if not success then
 end
 
 -- Prevent accidental quit on last window: :q! will not quit (transformed to
--- :e!) when there is only 1 window and there are unsaved changes in the buffer.
+-- :e!) when there is only 1 window and there are unsaved changes in a file that
+-- actually exists on disk.
 vim.cmd([[
-  cabbrev q! <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? (winnr('$') == 1 ? (&modified ? 'e!' : 'q!') : 'q!') : 'q!')<CR>
+  cabbrev q! <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? (winnr('$') == 1 && &modified && &buftype == '' && bufname('%') != '' && filereadable(expand('%:p')) ? 'e!' : 'q!') : 'q!')<CR>
 ]])
