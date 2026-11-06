@@ -33,13 +33,14 @@ return {
     picker = {
       enabled = true,
       ui_select = true,
+      win = {
+        input = {
+          keys = {
+            ["<Esc>"] = { "close", mode = { "n", "i" } },
+          },
+        },
+      },
       sources = {
-        files = {
-          hidden = true,
-        },
-        grep = {
-          hidden = true,
-        },
         colorschemes = {
           confirm = function(picker, item)
             picker:close()
@@ -57,20 +58,6 @@ return {
 
   keys = {
     -- Pickers
-    {
-      "<leader>ff",
-      function()
-        Snacks.picker.files()
-      end,
-      desc = "Find files",
-    },
-    {
-      "<leader>fr",
-      function()
-        Snacks.picker.grep()
-      end,
-      desc = "Live grep",
-    },
     {
       "<leader>fg",
       function()
