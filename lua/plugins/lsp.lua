@@ -17,25 +17,6 @@ return {
       vim.lsp.config("*", {
         capabilities = capabilities,
       })
-
-      vim.lsp.config("basedpyright", {
-        settings = {
-          basedpyright = {
-            analysis = {
-              inlayHints = {
-                variableTypes = true,
-                functionReturnTypes = true,
-              },
-            },
-          },
-        },
-      })
-
-      vim.lsp.config("clangd", {
-        init_options = {
-          fallbackFlags = { "-std=c++23" },
-        },
-      })
     end,
   },
 
