@@ -33,7 +33,11 @@ return {
       "mason-org/mason.nvim",
       "neovim/nvim-lspconfig",
     },
-    opts = {},
+    opts = {
+      automatic_enable = {
+        exclude = { "rust_analyzer" },
+      },
+    },
   },
 
   { -- Auto installs LSP servers, linters, and formatters.
@@ -48,7 +52,6 @@ return {
         "luacheck",
         "clangd",
         "clang-format",
-        "rust-analyzer",
         "basedpyright",
         "ruff",
         "prettier",
@@ -58,5 +61,11 @@ return {
         "css-lsp",
       },
     },
+  },
+
+  {
+    "mrcjkb/rustaceanvim",
+    version = "^9",
+    lazy = false,
   },
 }
