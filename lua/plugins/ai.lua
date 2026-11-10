@@ -12,5 +12,13 @@ return {
         auto_trigger = true,
       },
     },
+    config = function()
+      local m = require("config.keymaps")
+      m.map("i", "<Esc>", function()
+        if not require("copilot-lsp.nes").clear() then
+          m.feed_keys("<Esc>")
+        end
+      end, "Clear Copilot suggestion")
+    end,
   },
 }

@@ -3,6 +3,8 @@
   "bamboo.nvim": { "branch": "master", "commit": "1309bc88bffcf1bedc3e84e7fa9004de93da774a" },
   "blink.cmp": { "branch": "main", "commit": "78336bc89ee5365633bcf754d93df01678b5c08f" },
   "conform.nvim": { "branch": "master", "commit": "016802de402556da54c36bd7359b441266b01cdd" },
+  "copilot-lsp": { "branch": "main", "commit": "1b6d8273594643f51bb4c0c1d819bdb21b42159d" },
+  "copilot.lua": { "branch": "master", "commit": "1d674b416df08e5c54e442503b7703a0df462acf" },
   "cyberdream.nvim": { "branch": "main", "commit": "642c55ad2225f9f4809905918121b2c6d252ad58" },
   "dracula.nvim": { "branch": "main", "commit": "ae752c13e95fb7c5f58da4b5123cb804ea7568ee" },
   "dropbar.nvim": { "branch": "master", "commit": "f7c6fa21e2a7c32576e7a1791774a3736987f467" },
