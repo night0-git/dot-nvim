@@ -1,25 +1,25 @@
 local M = {}
 
-local function map(mode, key, func, desc, extra_opts)
+function M.map(mode, key, func, desc, extra_opts)
   local opts = vim.tbl_extend("force", extra_opts or {}, { desc = desc or "" })
 
   vim.keymap.set(mode, key, func, opts)
 end
 
 -- Swap "p" for "P" to easily paste without overwriting register.
-map({ "x" }, "p", "P")
-map({ "x" }, "P", "p")
+M.map({ "x" }, "p", "P")
+M.map({ "x" }, "P", "p")
 
 -- Keep selecting after indenting.
-map("x", "<", "<gv")
-map("x", ">", ">gv")
+M.map("x", "<", "<gv")
+M.map("x", ">", ">gv")
 
-map("i", "<C-BS>", "<C-w>")
+M.map("i", "<C-BS>", "<C-w>")
 
 -- Navigate buffers.
--- map("n", "<C-[>", "<cmd>bnext<cr>")
--- map("n", "<C-]>", "<cmd>bprev<cr>")
-map("n", "<leader><leader>", "<cmd>b#<cr>")
+-- M.map("n", "<C-[>", "<cmd>bnext<cr>")
+-- M.map("n", "<C-]>", "<cmd>bprev<cr>")
+M.map("n", "<leader><leader>", "<cmd>b#<cr>")
 
 -- Resize with arrows.
 -- Helper to resize with awareness of pane position.
@@ -58,48 +58,41 @@ local function resize(dir, val)
     end
   end
 end
-map("n", "<C-Up>", resize("up", 2))
-map("n", "<C-Down>", resize("down", 2))
-map("n", "<C-Left>", resize("left", 2))
-map("n", "<C-Right>", resize("right", 2))
+M.map("n", "<C-Up>", resize("up", 2))
+M.map("n", "<C-Down>", resize("down", 2))
+M.map("n", "<C-Left>", resize("left", 2))
+M.map("n", "<C-Right>", resize("right", 2))
 
 -- Better terminal navigation.
-map("t", "<C-h>", "<C-\\><C-n><C-w>h")
-map("t", "<C-j>", "<C-\\><C-n><C-w>j")
-map("t", "<C-k>", "<C-\\><C-n><C-w>k")
-map("t", "<C-l>", "<C-\\><C-n><C-w>l")
 map("t", "<C-u>", "<C-\\><C-n>")
+M.map("t", "<C-h>", "<C-\\><C-n><C-w>h")
+M.map("t", "<C-j>", "<C-\\><C-n><C-w>j")
+M.map("t", "<C-k>", "<C-\\><C-n><C-w>k")
+M.map("t", "<C-l>", "<C-\\><C-n><C-w>l")
 
 -- Shortcut for closing window, especially useful for fish's vi mode.
-map({ "n", "t" }, "<M-q>", function()
+M.map({ "n", "t" }, "<M-q>", function()
   local win = vim.api.nvim_get_current_win()
 
   pcall(vim.api.nvim_win_close, win, false)
 end, "Close any window, including terminals")
 
-local function feed_keys(key)
+function M.feed_keys(key)
   vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, false, true), "n", false)
 end
 
 -- Close floating window with Esc key. Any window can be assigned a tag 'float'
 -- to be closed by Esc.
-map("n", "<Esc>", function()
+M.map("n", "<Esc>", function()
   local win = vim.api.nvim_get_current_win()
   local config = vim.api.nvim_win_get_config(win)
 
   if vim.w[win].tag == "float" or config.relative ~= "" then
     pcall(vim.api.nvim_win_close, win, false)
   else
-    feed_keys("<Esc>")
+    M.feed_keys("<Esc>")
   end
 end, "Close floating window")
-
--- Clear copilot suggestions.
-map("i", "<Esc>", function()
-  if not require("copilot-lsp.nes").clear() then
-    feed_keys("<Esc>")
-  end
-end, "Clear copilot suggestion")
 
 local function smart_copy(file_name_pattern)
   local mode = vim.api.nvim_get_mode().mode
@@ -119,17 +112,16 @@ local function smart_copy(file_name_pattern)
       or string.format("@%s:%d-%d", file, start_line, end_line)
 
     vim.fn.setreg("+", location)
-    feed_keys("<Esc>")
+    M.feed_keys("<Esc>")
   end
 end
 
-map({ "n", "v" }, "<leader>y", function()
+M.map({ "n", "v" }, "<leader>y", function()
   smart_copy("%:p:.")
 end, "Smart copy (relative)")
 
-map({ "n", "v" }, "<leader>Y", function()
+M.map({ "n", "v" }, "<leader>Y", function()
   smart_copy("%:p")
 end, "Smart copy (absolute)")
 
-M.map = map
 return M
