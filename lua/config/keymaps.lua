@@ -64,7 +64,6 @@ M.map("n", "<C-Left>", resize("left", 2))
 M.map("n", "<C-Right>", resize("right", 2))
 
 -- Better terminal navigation.
-map("t", "<C-u>", "<C-\\><C-n>")
 M.map("t", "<C-h>", "<C-\\><C-n><C-w>h")
 M.map("t", "<C-j>", "<C-\\><C-n><C-w>j")
 M.map("t", "<C-k>", "<C-\\><C-n><C-w>k")
