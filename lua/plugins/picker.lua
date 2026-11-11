@@ -58,9 +58,6 @@ return {
         move_up = { "<Up>", "<C-k>" },
         move_down = { "<Down>", "<C-j>" },
       },
-      layout = {
-        prompt_position = "top",
-      },
     },
     lazy = false,
     keys = {
