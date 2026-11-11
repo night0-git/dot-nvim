@@ -22,7 +22,7 @@ return {
   opts = {
     legacy_commands = false,
     picker = {
-      name = "snacks.picker",
+      name = "fzf-lua",
     },
     workspaces = {
       {

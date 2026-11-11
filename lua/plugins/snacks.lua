@@ -29,64 +29,9 @@ return {
     terminal = { enabled = true },
     gitbrowse = { enabled = true },
     bufdelete = { enabled = true },
-
-    picker = {
-      enabled = true,
-      ui_select = true,
-      win = {
-        input = {
-          keys = {
-            ["<Esc>"] = { "close", mode = { "n", "i" } },
-          },
-        },
-      },
-      sources = {
-        colorschemes = {
-          confirm = function(picker, item)
-            picker:close()
-            if item then
-              picker.preview.state.colorscheme = nil
-              vim.schedule(function()
-                vim.cmd("SetColorscheme " .. item.text)
-              end)
-            end
-          end,
-        },
-      },
-    },
   },
 
   keys = {
-    -- Pickers
-    {
-      "<leader>fg",
-      function()
-        Snacks.picker.git_files()
-      end,
-      desc = "Find git files",
-    },
-    {
-      "<leader>fb",
-      function()
-        Snacks.picker.buffers()
-      end,
-      desc = "Find buffers",
-    },
-    {
-      "<leader>fc",
-      function()
-        Snacks.picker.colorschemes()
-      end,
-      desc = "Find colorschemes",
-    },
-    {
-      "<leader>fp",
-      function()
-        Snacks.picker.projects()
-      end,
-      desc = "Find projects",
-    },
-
     -- Buffer management
     {
       "<leader>bd",
