@@ -12,7 +12,7 @@ return {
         lualine_x = {},
         lualine_y = { "encoding", "fileformat", "filetype" },
       },
-      extensions = { "lazy", "oil" },
+      extensions = { "lazy", "oil", "fzf" },
     },
   },
 
