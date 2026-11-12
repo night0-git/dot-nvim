@@ -2,6 +2,7 @@ return {
   "lewis6991/gitsigns.nvim",
   lazy = false,
   opts = {
+    base = "HEAD",
     current_line_blame = true,
   },
   keys = {
